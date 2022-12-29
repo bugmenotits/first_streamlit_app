@@ -17,5 +17,5 @@ streamlit.dataframe(df)
 
 df = df.set_index('Fruit')
 streamlit.multiselect('Pick', list(df.index),['Avocado','Strawberries'])
-
-streamlit.dataframe(df)
+df_to_show = df.loc[df]
+streamlit.dataframe(df_to_show)
