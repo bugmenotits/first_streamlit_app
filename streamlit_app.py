@@ -16,6 +16,6 @@ df = pd.read_csv('https://uni-lab-files.s3.us-west-2.amazonaws.com/dabw/fruit_ma
 streamlit.dataframe(df)
 
 df = df.set_index('Fruit')
-streamlit.multiselect('Pick', list(df.index),['Avocado','Strawberries'])
-df_to_show = df.loc[df]
+df_select=streamlit.multiselect('Pick', list(df.index),['Avocado','Strawberries'])
+df_to_show = df.loc[df_select]
 streamlit.dataframe(df_to_show)
