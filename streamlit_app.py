@@ -35,10 +35,18 @@ fruit_choice = streamlit.text_input('What fruit would you like information about
 streamlit.write('The user entered ', fruit_choice)
 
 
+streamlit.header('Fruit')
 
-streamlit.text('testing')
-
-
+try:
+  fruit_choice = streamlit.text_input('What fruit')
+  if not fruit_choice:
+    streamlit.error('Please select a fruit')
+   else:
+    fruit_repsonse= requests.get("https://fruityvice.com/api/fruit/" + fruit_choice)
+    fruitvice_normalized = pd.json_normalize(fruit_repsonse.json())
+    streamlit.dataframe(fruitvice_normalized)
+except URLError as e:
+  streamlit.error()
 
 my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
 my_cur = my_cnx.cursor()
@@ -48,5 +56,3 @@ streamlit.header("My fruit list :")
 streamlit.dataframe(my_data_row)
 
 
-streamlit.write('Adding new one',fruit_choice)
-my_cur.execute("insert new fruits'('from_streamlit')")
