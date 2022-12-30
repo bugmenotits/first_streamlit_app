@@ -48,4 +48,4 @@ streamlit.dataframe(my_data_row)
 
 
 streamlit.write('Adding new one',add_my_fruit)
-my_cur.execute("insert new fruits'('from_streamlit')"
+my_cur.execute("insert new fruits'('from_streamlit')")
