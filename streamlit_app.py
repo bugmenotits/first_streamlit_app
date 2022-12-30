@@ -57,7 +57,7 @@ except URLError as e:
 streamlit.header('The fruit list')
 
 def get_fruit_list():
-  with my_cnx as my_cur:
+  with my_cnx.cursor() as my_cur:
     my_cur.execute("SELECT * from fruitvice")
     return my_cur.fetchall()
 
@@ -66,7 +66,7 @@ if streamlit.button('Get fruit list'):
   my_data=get_fruit_list()
   streamlit.dataframe(my_data)
   
-add_my_fruit = streamlit.text_input('Add a fruit')
+#add_my_fruit = streamlit.text_input('Add a fruit')
 
 
 def insert_row_snowflake(new_fruit):
