@@ -47,5 +47,5 @@ streamlit.header("My fruit list :")
 streamlit.dataframe(my_data_row)
 
 
-streamlit.write('Adding new one',add_my_fruit)
+streamlit.write('Adding new one',fruit_choice)
 my_cur.execute("insert new fruits'('from_streamlit')")
